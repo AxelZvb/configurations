@@ -1,0 +1,29 @@
+startup_message off
+defscrollback 20000
+autodetach on
+vbell off
+shell bash
+
+# F12: next window
+# F11: prev window
+# F10: shift focus to other viewport (only when split)
+# F9 : split current viewport
+# F8 : remove current viewport (only when split)
+bindkey -k F1 prev
+bindkey -k F2 next
+bindkey -k k; focus
+bindkey -k k9 split -v
+bindkey -k k8 split
+bindkey -k k7 remove
+caption splitonly
+
+# Show 'task bar' on last line
+hardstatus on
+hardstatus alwayslastline
+hardstatus string '%{= kw}[ %{G}%H%{w} ][ %=%-Lw%{kR}(%{W}%n*%f %t%{kR})%{w}%+Lw%= %{w}][ %{B}%d/%m/%y %{W}%c:%s%{w} ]'
+
+# Default setup: four bashes
+screen 0 bash
+screen 1 bash
+next
+

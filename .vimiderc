@@ -1,0 +1,166 @@
+set nocompatible
+syntax on
+set nowrap
+set encoding=utf8
+
+:set backspace=indent,eol,start
+:set shellcmdflag=-ic
+
+syntax on
+filetype indent plugin on
+set spell spelllang:en_us
+map <F7> :tabp<CR>
+map <F8> :tabn<CR>
+au FileType gitcommit
+ \ hi gitcommitSummary ctermfg=yellow ctermbg=red
+
+"""" START Vundle Configuration 
+
+" Disable file type for vundle
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Utility
+"	nerdtree
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'janlay/NERD-tree-project.git'
+Plugin 'Shougo/neocomplete.vim'
+
+Plugin 'dbakker/vim-projectroot.git'
+
+Plugin 'Townk/vim-autoclose'
+Plugin 'neomake/neomake'
+
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'xolox/vim-misc'
+
+" Plugin 'jakedouglas/exuberant-ctags'
+Plugin 'honza/vim-snippets'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'jceb/vim-hier'
+Plugin 'thinca/vim-localrc'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" Show linenumbers
+set number
+set ruler
+
+" Set Proper Tabs
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+
+" Always display the status line
+set laststatus=2
+
+" Enable Elite mode, No ARRRROWWS!!!!
+let g:elite_mode=1
+
+" Enable highlighting of the current line
+set cursorline
+
+let base16colorspace=256  " Access colors present in 256 colorspace
+
+" Syntastic Configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+map <C-n> :NERDTreeToggle<CR>
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Neocomplete Settings
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Syntastic Configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_cpp_checkers = ["gcc"]
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_no_include_search = 1
+let g:syntastic_cpp_config_file = '.syn_cfg'
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_enable_elixir_checker = 1
+" let g:syntastic_elixir_checkers = ["elixir"]
+
+
+" custom commands
+" run UT runner
+function! ShellCmd(myParam)
+    :! a:myParam || echo failed
+endfunction
+
+function! UTRUN(...)
+    :! build/UT_runner || echo failed
+endfunction
+
+function! MCM(...)
+    :! make clean || echo failed
+    :! make || echo faild
+endfunction
+
+command! -nargs=1 ShellCmd call ShellCmd(<f-args>)
+command! -nargs=0 UTRUN call UTRUN()
+command! -nargs=0 MCM call MCM()
+
+map  <C-l> :tabn<CR>
+map  <C-;> :tabp<CR>
+
