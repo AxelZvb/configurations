@@ -43,6 +43,8 @@ bindsym $mod+Shift+b focus parent,kill
 
 bindsym --release Print exec "flameshot gui"
 
+bindsym $mod+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
+
 # CUSTOM END
 
 # kill focused window

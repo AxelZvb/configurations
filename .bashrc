@@ -175,6 +175,7 @@ alias pcu='cd /data/projects/thermo-king/pcu/axezev/work/ac'
 # Aliases for the GATCON project
 alias gatcon='cd ~/repos/GATCON/gatcon_ac'
 alias gatiot='cd ~/repos/GATCON/gatcon_ac/iot_stm'
+alias gatacq='cd ~/repos/GATCON/gatcon_ac/AC_qualification'
 alias iot='cd ~/repos/IOT/iot_stm32/'
 alias iotdoc='cd ~/repos/IOT/iot_stm32/documentation'
 
@@ -235,7 +236,6 @@ i3_sw() {
 i3_mv() {
 	i3-msg "rename workspace $1 to $2;"
 }
-
 
 # Post action steps
 gsettings set org.gnome.Vino require-encryption false
