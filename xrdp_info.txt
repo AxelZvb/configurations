@@ -1,0 +1,9 @@
+
+
+# to connect you neet to change
+/etc/X11/Xwrapper.config
+allowed_users = anybody
+
+# start i3 over xrdp (xorg)
+echo i3 > ~/.xsession
+chmod +x ~/.xsession
