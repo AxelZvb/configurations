@@ -126,6 +126,7 @@ alias stlink='~/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32CubePr
 
 # Mod bashrc
 alias vcfg='vim ~/.bashrc'
+alias lcfg='source ~/.bashrc'
 
 # Remotes
 alias rlnxdev02='remmina -c /home/axezev/.local/share/remmina/1547116239350.remmina &'
@@ -150,6 +151,10 @@ alias git_push_lease='git push --force-with-lease'
 alias git_get_all_branches='for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done'
 alias git_prune='git remote prune origin'
 alias git_rm_last_commit='git reset HEAD~1'
+
+gitch () {
+    git checkout "$1"
+}
 
 # Make assists
 alias mcm='make clean && make'
@@ -199,6 +204,8 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export PATH="$PATH:/home/axezev/.local/usr/local/bin"
 export PATH="$PATH:/home/axezev/.local/bin"
+export PATH="$PATH:/home/axezev/repos/buildtools/bazel-bin/buildifier/linux_amd64_stripped"
+
 
 format() {
 	find $1 -type f -name '*.[ch]' | while read file; do clang-format-6.0 $file > x && mv x $file; done
@@ -224,9 +231,15 @@ alias pdvpn='sudo openconnect --juniper vpn.prodrive.nl/linux --certificate=/hom
 # Screen configuration aliases
 alias wdisp='~/.screenlayout/work_setup.sh'
 alias ldisp='~/.screenlayout/no-disps.sh'
+alias lddisp='~/.screenlayout/no-disps-dimm.sh'
 
 export PATH="$PATH:$HOME/bin"
+
+# BAZEL
 source /home/axezev/.bazel/bin/bazel-complete.bash
+
+alias biot='bazel build --crosstool_top=//toolchain --cpu=arm-none-eabi :stm32'
+alias biotut='bazel build :UT'
 
 # I3 functions
 i3_sw() {
@@ -239,3 +252,21 @@ i3_mv() {
 
 # Post action steps
 gsettings set org.gnome.Vino require-encryption false
+
+# BASH commands
+alias rm='trash'
+alias rmr='rm'
+setx() {
+    chmod +x $1
+}
+
+# QT
+
+alias qt='sudo ~/Qt/Tools/QtCreator/bin/qtcreator'
+alias guidcdc='cd ~/Qt_projects/DCDC/dcdc_gui'
+alias guigat='cd ~/Qt_projects/GATCON/'
+alias guipcu='cd ~/Qt_projects/PCU/'
+alias guicdm='cd ~/Qt_projects/CDM/'
+
+
+alias calc='speedcrunch'
