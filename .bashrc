@@ -142,6 +142,7 @@ alias neon='eclipse --launcher.suppressErrors -quiet &> /dev/null&'
 alias mars='eclipse-mars --launcher.suppressErrors -quiet &> /dev/null&'
 
 # Git shortcuts
+alias vgit='vim ~/configurations/.gitconfig'
 alias gits='git status'
 alias gitp='git push'
 alias gitc='git commit'
@@ -162,6 +163,7 @@ alias mcm='make clean && make'
 #Debugger
 alias dcocd='cd openocd/0.10.0-201601101000-dev/bin/'
 alias lsstl='/data/projects/hyster-yale/stlink/st-info --probe hla_serial'
+alias ocdgen='./openocd -f stm32f4_generic.cfg'
 
 # start python
 alias py3='python3'
@@ -260,6 +262,16 @@ setx() {
     chmod +x $1
 }
 
+
+rif() {
+    sed -i 's|'$1'|'$2'|g' $3
+
+}
+
+fle() {
+    find $1 -type f -print0 | xargs -0 dos2unix
+}
+
 # QT
 
 alias qt='sudo ~/Qt/Tools/QtCreator/bin/qtcreator'
@@ -270,3 +282,7 @@ alias guicdm='cd ~/Qt_projects/CDM/'
 
 
 alias calc='speedcrunch'
+
+# drives
+
+alias didr='ls -la /dev/sd*'
