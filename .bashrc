@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+#~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -153,10 +153,6 @@ alias git_get_all_branches='for remote in `git branch -r`; do git branch --track
 alias git_prune='git remote prune origin'
 alias git_rm_last_commit='git reset HEAD~1'
 
-gitch () {
-    git checkout "$1"
-}
-
 # Make assists
 alias mcm='make clean && make'
 
@@ -234,6 +230,7 @@ alias pdvpn='sudo openconnect --juniper vpn.prodrive.nl/linux --certificate=/hom
 alias wdisp='~/.screenlayout/work_setup.sh'
 alias ldisp='~/.screenlayout/no-disps.sh'
 alias lddisp='~/.screenlayout/no-disps-dimm.sh'
+alias mdisp='~/.screenlayout/meeting_room.sh'
 
 export PATH="$PATH:$HOME/bin"
 
@@ -286,3 +283,12 @@ alias calc='speedcrunch'
 # drives
 
 alias didr='ls -la /dev/sd*'
+
+vim_rm_lines() {
+    # 1 = the search phrase
+    # 2 = number of line before
+    # 3 = number of lines after
+    # 4 = input file
+    # 5 = output file
+    vim -Nes "+g/$1/.-$2,.+$3d" '+w !tee' '+q!' $4 > $5
+}
