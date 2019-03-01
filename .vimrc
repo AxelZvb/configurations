@@ -12,6 +12,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'Valloric/YouCompleteMe'
+
 " ********** CODE-FMT  **********
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)

@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export HISTCONTROL=ignoreboth:erasedups
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -133,6 +135,7 @@ alias rlnxdev02='remmina -c /home/axezev/.local/share/remmina/1547116239350.remm
 alias rrds02='remmina -c /home/axezev/.local/share/remmina/1547115843693.remmina&'
 
 # VIM
+alias vvim='vim ~/.vimrc'
 alias vide='~/bin/vim -u ~/vimiderc'
 alias vin='~/bin/vim'
 alias vcl='find . -type f -name ".*.swp" -exec rm -f {} \;'
@@ -241,6 +244,7 @@ alias biot='bazel build --crosstool_top=//toolchain --cpu=arm-none-eabi :stm32'
 alias biotut='bazel build :UT'
 
 # I3 functions
+alias vi3='vim ~/configurations/i3_config'
 i3_sw() {
 	i3-msg "rename workspace $1 to temporary; rename workspace $2 to $1; rename workspace temporary to $2"	
 }
@@ -253,8 +257,6 @@ i3_mv() {
 gsettings set org.gnome.Vino require-encryption false
 
 # BASH commands
-alias rm='trash'
-alias rmr='rm'
 setx() {
     chmod +x $1
 }
@@ -277,6 +279,9 @@ alias guigat='cd ~/Qt_projects/GATCON/'
 alias guipcu='cd ~/Qt_projects/PCU/'
 alias guicdm='cd ~/Qt_projects/CDM/'
 
+# LATEX
+
+alias lxcl='rm *.aux *.log *.out *.upa *.lot *.lof *.toc *.sta *.lol'
 
 alias calc='speedcrunch'
 
