@@ -2,7 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=ignoredups:erasedups
+#export HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+
 
 # If not running interactively, don't do anything
 case $- in
@@ -184,6 +187,8 @@ alias gatiot='cd ~/repos/GATCON/gatcon_ac/iot_stm'
 alias gatacq='cd ~/repos/GATCON/gatcon_ac/AC_qualification'
 alias iot='cd ~/repos/IOT/iot_stm32/'
 alias iotdoc='cd ~/repos/IOT/iot_stm32/documentation'
+alias iottst='cd ~/repos/IOT/iot_stm32/UT'
+alias dcdc='cd ~/repos/DCDC/ac'
 
 # Aliases for the YH_PROBLEM project
 alias yh_p='cd /data/projects/thermo-king/gatcon/axezev/temp/grm2g'
@@ -283,6 +288,8 @@ alias guicdm='cd ~/Qt_projects/CDM/'
 
 alias lxcl='rm *.aux *.log *.out *.upa *.lot *.lof *.toc *.sta *.lol'
 
+alias lxb='~/repos/IOT/iot_stm32/scripts/pdtpdflatex'
+
 alias calc='speedcrunch'
 
 # drives
@@ -297,3 +304,6 @@ vim_rm_lines() {
     # 5 = output file
     vim -Nes "+g/$1/.-$2,.+$3d" '+w !tee' '+q!' $4 > $5
 }
+
+#LOGIC
+alias logic='sudo ~/Downloads/Logic\ 1.2.18\ \(64-bit\)/Logic'

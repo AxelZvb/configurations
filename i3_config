@@ -35,6 +35,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # CUSTOM START
 
 bindsym $mod+o exec i3lock -i ~/.i3/background.png -c '#000000' -o '#191d0f' -w '#572020' -l '#ffffff' 
+bindsym $mod+i exec i3lock -i ~/.i3/background.png -c '#000000' -o '#191d0f' -w '#572020' -l '#ffffff' && systemctl suspend
 
 bindsym $mod+n move workspace to output left
 bindsym $mod+m move workspace to output right
@@ -46,7 +47,13 @@ bindsym --release Print exec "flameshot gui"
 bindsym $mod+t exec i3-msg title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
 bindsym $mod+y exec i3-msg focus parent, title_format `zenity --title="i3-msg title_format" --text "Enter a title" --entry)`
 
-# CUSTOM END
+# Create site shortcuts
+bindsym $mod+Ctrl+t exec google-chrome --app=https://webmail.prodrive.nl/owa/#path=/tasks&
+bindsym $mod+Ctrl+m exec google-chrome --app=https://webmail.prodrive.nl/owa/#path=/mail&
+bindsym $mod+Ctrl+a exec google-chrome --app=https://webmail.prodrive.nl/owa/#path=/calendar/view/Week&
+bindsym $mod+Ctrl+b exec google-chrome --app=https://bitbucket.prodrive.nl/dashboard&
+bindsym $mod+Ctrl+v exec google-chrome --app=https://www.scrumwise.com/scrum/#/backlog/project/iot-stm32/id-167429-4646-1&
+#CUSTOM END
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -11,8 +11,11 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'lervag/vimtex'
+Plugin 'ahw/vim-hooks.git'
 Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'aklt/plantuml-syntax'
 
 " ********** CODE-FMT  **********
 " Add maktaba and codefmt to the runtimepath.
@@ -89,3 +92,5 @@ nnoremap <C>' ciw'<C-r>"'<Esc>
 
 au FileType gitcommit
  \ hi gitcommitSummary ctermfg=yellow ctermbg=red
+
+let g:loaded_youcompleteme = 1
