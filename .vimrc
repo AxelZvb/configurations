@@ -26,7 +26,7 @@ Plugin 'google/vim-codefmt'
 " `:help :Glaive` for usage.
 Plugin 'google/vim-glaive'
 " ********** CODE-FMT  **********
-
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 
 """ ********************************* PLUGINS **************************** """
 
