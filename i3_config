@@ -54,6 +54,7 @@ bindsym $mod+Ctrl+a exec google-chrome --app=https://webmail.prodrive.nl/owa/#pa
 bindsym $mod+Ctrl+b exec google-chrome --app=https://bitbucket.prodrive.nl/dashboard&
 bindsym $mod+Ctrl+v exec google-chrome --app=https://www.scrumwise.com/scrum/#/backlog/project/iot-stm32/id-167429-4646-1&
 bindsym $mod+Ctrl+h exec google-chrome --app=https://dashboard.prodrive.nl/hour/bookings&
+bindsym $mod+Ctrl+c exec google-chrome --app=https://teams.microsoft.com/&
 bindsym $mod+Ctrl+g exec google-chrome
 
 
