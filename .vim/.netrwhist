@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/axezev/code_projects/program_split/program_split'
-let g:netrw_dirhist_2='/home/axezev/repos/DCDC/py'
-let g:netrw_dirhist_3='/home/axezev/repos/DCDC/py/__pycache__'
-let g:netrw_dirhist_4='/home/axezev/repos/DCDC/py'
-let g:netrw_dirhist_5='/home/axezev/copydrive/axezev/service'
-let g:netrw_dirhist_6='/home/axezev/repos/DCDC/py'

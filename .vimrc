@@ -18,7 +18,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'aklt/plantuml-syntax'
 
 " Plugin 'TaskList.vim'
-Plugin 'vitalk/vim-simple-todo'
+" Plugin 'vitalk/vim-simple-todo'
 
 " ********** CODE-FMT  **********
 " Add maktaba and codefmt to the runtimepath.
