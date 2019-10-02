@@ -4,6 +4,14 @@ move_workspace_to_output() {
     i3 '[workspace="'$1'"]' move workspace to output $2 > /dev/null
 }
 
+move_workspace_to_output_and_focus() {
+    i3 '[workspace="'$1'"]' move workspace to output $2 > /dev/null
+    if [ "$3" == "true" ]
+    then
+        i3 '[workspace="'$1'"]' focus > /dev/null
+    fi
+}
+
 get_workspace_output() {
     echo `i3-msg -t get_workspaces \
     | jq '.[] | select(.name=="'$1'").output' \
@@ -11,19 +19,19 @@ get_workspace_output() {
 }
 
 load_workspaces_from_file() {
-while IFS=, read -r col1 col2
+while IFS=, read -r col1 col2 col3
 do
     if [ ! -z "$col1" ]
     then
-        echo "Workspace: $col1, Display: $col2"
-        move_workspace_to_output $col1 $col2
+        echo "Workspace: $col1, Display: $col2, Visible: $col3"
+        move_workspace_to_output_and_focus $col1 $col2 $col3
     fi
 done < $1
 }
 
 save_workspaces_to_file() {
     i3-msg -t get_workspaces \
-    | jq '.[] | "\(select(.).name), \(select(.).output)"' \
+    | jq '.[] | "\(select(.).name), \(select(.).output), \(select(.).visible)"' \
     | cut -d"\"" -f2 > $1
 }
 

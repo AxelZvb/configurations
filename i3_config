@@ -65,9 +65,9 @@ bindsym $mod+Ctrl+p exec google-chrome --app=https://project.prodrive.nl/?e=4603
 bindsym $mod+Ctrl+d exec google-chrome --app=https://dashboard.prodrive.nl/&
 bindsym $mod+Ctrl+g exec google-chrome
 
-bindsym $mod+Ctrl+1 exec ~/.screenlayout/no-disps.sh
+bindsym $mod+Ctrl+1 exec "~/configurations/i3_workspace_position_restore.sh save; ~/.screenlayout/no-disps.sh"
 bindsym $mod+Ctrl+2 exec ~/.screenlayout/work_setup.sh
-bindsym $mod+Ctrl+3 exec "~/.screenlayout/work_setup.sh; ~/.screenlayout/fix_layout.sh"
+bindsym $mod+Ctrl+3 exec "~/.screenlayout/work_setup.sh; ~/configurations/i3_workspace_position_restore.sh"
 bindsym $mod+Ctrl+4 exec ~/.screenlayout/no-disps-dimm.sh
 
 #CUSTOM END
