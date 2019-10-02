@@ -27,25 +27,15 @@ save_workspaces_to_file() {
     | cut -d"\"" -f2 > $1
 }
 
-#name=1
-#var=$(get_workspace_output "$name")
-#echo "$var"
+i3_workspace_file=${2:-~/i3_workspace.csv}
 
-if [ ! -z "$1" ] && [ ! -z "$2" ]
-then
-    if [ $1 == "save" ]
-    then 
-        echo "save"
-        save_workspaces_to_file $2
-    else
-        if [ $1 == "load" ]
-        then
-            echo "load"
-            load_workspaces_from_file $2
-        else
-            echo "incorrect args"
-        fi
-    fi
-   else
-    echo "incorrect args"
+if [ ${1:-load} == "save" ]
+then 
+	echo "Saving workspace..."
+	save_workspaces_to_file $i3_workspace_file
+	echo "Saved workspace to:" $i3_workspace_file
+else
+	echo "Loading workspace..."
+	load_workspaces_from_file $i3_workspace_file
+	echo "Workspace restored from:" $i3_workspace_file
 fi
