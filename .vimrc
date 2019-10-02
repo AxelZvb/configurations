@@ -17,6 +17,9 @@ Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'aklt/plantuml-syntax'
 
+" Plugin 'TaskList.vim'
+Plugin 'vitalk/vim-simple-todo'
+
 " ********** CODE-FMT  **********
 " Add maktaba and codefmt to the runtimepath.
 " (The latter must be installed before it can be used.)
@@ -27,6 +30,9 @@ Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 " ********** CODE-FMT  **********
 Plugin 'vim-scripts/DoxygenToolkit.vim'
+
+Plugin 'tyru/open-browser.vim'
+Plugin 'weirongxu/plantuml-previewer.vim'
 
 """ ********************************* PLUGINS **************************** """
 

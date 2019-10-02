@@ -17,12 +17,12 @@
     cp = cherry-pick
     uadd = reset HEAD
     ua = rm --cache
-
+    d = "!git --no-pager diff"
 [core]
     hooksPath = /home/axezev/git_hooks/
 
 [color]
-    ui = true
+    #ui = true
 
 [color "branch"]
     current = yellow reverse

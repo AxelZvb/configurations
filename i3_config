@@ -29,6 +29,11 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-manager
+
+exec --no-starup-id  feh --bg-scale ~/Desktop/DragonRed.jpg
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -41,6 +46,7 @@ bindsym $mod+n move workspace to output left
 bindsym $mod+m move workspace to output right
 
 bindsym $mod+Shift+b focus parent,kill
+bindsym $mod+Shift+v focus parent
 
 bindsym --release Print exec "flameshot gui"
 
@@ -55,8 +61,14 @@ bindsym $mod+Ctrl+b exec google-chrome --app=https://bitbucket.prodrive.nl/dashb
 bindsym $mod+Ctrl+v exec google-chrome --app=https://www.scrumwise.com/scrum/#/backlog/project/iot-stm32/id-167429-4646-1&
 bindsym $mod+Ctrl+h exec google-chrome --app=https://dashboard.prodrive.nl/hour/bookings&
 bindsym $mod+Ctrl+c exec google-chrome --app=https://teams.microsoft.com/&
+bindsym $mod+Ctrl+p exec google-chrome --app=https://project.prodrive.nl/?e=4603&d=1&
+bindsym $mod+Ctrl+d exec google-chrome --app=https://dashboard.prodrive.nl/&
 bindsym $mod+Ctrl+g exec google-chrome
 
+bindsym $mod+Ctrl+1 exec ~/.screenlayout/no-disps.sh
+bindsym $mod+Ctrl+2 exec ~/.screenlayout/work_setup.sh
+bindsym $mod+Ctrl+3 exec "~/.screenlayout/work_setup.sh; ~/.screenlayout/fix_layout.sh"
+bindsym $mod+Ctrl+4 exec ~/.screenlayout/no-disps-dimm.sh
 
 #CUSTOM END
 
