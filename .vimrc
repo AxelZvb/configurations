@@ -34,6 +34,11 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'tyru/open-browser.vim'
 Plugin 'weirongxu/plantuml-previewer.vim'
 
+Plugin 'kana/vim-textobj-indent'
+Plugin 'kana/vim-textobj-user'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+
 """ ********************************* PLUGINS **************************** """
 
 " All of your Plugins must be added before the following line
@@ -57,7 +62,7 @@ call glaive#Install()
 " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
 Glaive codefmt plugin[mappings]
 Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
-Glaive codefmt clang_format_executable="/usr/bin/clang-format-7"
+Glaive codefmt clang_format_executable="/usr/bin/clang-format-8"
 
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
@@ -100,3 +105,37 @@ au FileType gitcommit
  \ hi gitcommitSummary ctermfg=yellow ctermbg=red
 
 let g:loaded_youcompleteme = 1
+
+set hlsearch
+
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
+
+set number
+set relativenumber

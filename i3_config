@@ -39,8 +39,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # CUSTOM START
 
-bindsym $mod+o exec i3lock -i ~/.i3/background.png -c '#000000' -o '#191d0f' -w '#572020' -l '#ffffff' 
-bindsym $mod+i exec i3lock -i ~/.i3/background.png -c '#000000' -o '#191d0f' -w '#572020' -l '#ffffff' && systemctl suspend
+bindsym $mod+o exec ~/repos/i3lock/build/i3lock -c '#000000' -o '#191d0f' -w '#572020' -l '#ffffff' 
+bindsym $mod+i exec ~/repos/i3lock/build/i3lock -c '#000000' -o '#191d0f' -w '#572020' -l '#ffffff' && systemctl suspend
 
 bindsym $mod+n move workspace to output left
 bindsym $mod+m move workspace to output right
@@ -63,6 +63,8 @@ bindsym $mod+Ctrl+h exec google-chrome --app=https://dashboard.prodrive.nl/hour/
 bindsym $mod+Ctrl+c exec google-chrome --app=https://teams.microsoft.com/&
 bindsym $mod+Ctrl+p exec google-chrome --app=https://project.prodrive.nl/?e=4603&d=1&
 bindsym $mod+Ctrl+d exec google-chrome --app=https://dashboard.prodrive.nl/&
+bindsym $mod+Ctrl+e exec eclipse
+bindsym $mod+Ctrl+q exec speedcrunch
 bindsym $mod+Ctrl+g exec google-chrome
 
 bindsym $mod+Ctrl+1 exec "~/configurations/i3_workspace_position_restore.sh save; ~/.screenlayout/no-disps.sh"
