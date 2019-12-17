@@ -28,6 +28,7 @@ Plugin 'google/vim-codefmt'
 " Also add Glaive, which is used to configure codefmt's maktaba flags. See
 " `:help :Glaive` for usage.
 Plugin 'google/vim-glaive'
+Plugin 'bazelbuild/vim-bazel'
 " ********** CODE-FMT  **********
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 
@@ -38,6 +39,11 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'kana/vim-textobj-user'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+
+Plugin 'flazz/vim-colorschemes'
+
+Plugin 'Rykka/riv.vim'
+
 
 """ ********************************* PLUGINS **************************** """
 
@@ -65,7 +71,7 @@ Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VER
 Glaive codefmt clang_format_executable="/usr/bin/clang-format-8"
 
 augroup autoformat_settings
-  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType bazel,bzl AutoFormatBuffer buildifier
   autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
@@ -122,7 +128,7 @@ function! DoPrettyXML()
   0put ='<PrettyXML>'
   $put ='</PrettyXML>'
   silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " xmllint will insert an <?xml?> header. It's easy enough to delete
   " if you don't want it.
   " delete the fake tags
   2d
@@ -139,3 +145,25 @@ command! PrettyXML call DoPrettyXML()
 
 set number
 set relativenumber
+" To avoid being able to select the line numbers:
+" set mouse=a
+
+" colorscheme twilight
+hi clear SpellBad
+hi SpellBad cterm=underline
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
+" Setup some options to use VIM as an ide
+augroup project
+  autocmd!
+  autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
+augroup END
+
+" in file cannot be found
+" let &path.="src/include,/usr/include/AL,"

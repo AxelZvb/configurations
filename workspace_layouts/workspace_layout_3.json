@@ -1,0 +1,102 @@
+// vim:ts=4:sw=4:et
+{
+    // splith split container with 2 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": 1,
+    "type": "con",
+    "nodes": [{
+        // splitv split container with 2 children
+        "border": "normal",
+        "floating": "auto_off",
+        "layout": "splitv",
+        "percent": 0.5,
+        "type": "con",
+        "nodes": [{
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+                "height": 2521,
+                "width": 1436,
+                "x": 4482,
+                "y": 18
+            },
+            "name": "Mail – axel.zevenbergen@prodrive-technologies.com",
+            "percent": 0.5,
+            "swallows": [{
+                "class": "^Google\\-chrome$",
+                "instance": "^webmail\\.prodrive\\.nl__owa$"
+                    // "title": "^Mail\\ \\–\\ axel\\.zevenbergen\\@prodrive\\-technologies\\.com$",
+                    // "window_role": "^pop\\-up$"
+            }],
+            "type": "con"
+        }, {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+                "height": 2521,
+                "width": 1436,
+                "x": 4482,
+                "y": 18
+            },
+            "name": "Chat | Microsoft Teams",
+            "percent": 0.5,
+            "swallows": [{
+                "class": "^Google\\-chrome$",
+                "instance": "^teams\\.microsoft\\.com$"
+                    // "title": "^Chat\\ \\|\\ Microsoft\\ Teams$",
+                    // "window_role": "^pop\\-up$"
+            }],
+            "type": "con"
+        }]
+    }, {
+        // splitv split container with 2 children
+        "border": "normal",
+        "floating": "auto_off",
+        "layout": "splitv",
+        "percent": 0.5,
+        "type": "con",
+        "nodes": [{
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+                "height": 1250,
+                "width": 716,
+                "x": 5202,
+                "y": 18
+            },
+            "name": "Calendar – axel.zevenbergen@prodrive-technologies.com",
+            "percent": 0.5,
+            "swallows": [{
+                "class": "^Google\\-chrome$",
+                "instance": "^webmail\\.prodrive\\.nl__owa$"
+                    // "title": "^Calendar\\ \\–\\ axel\\.zevenbergen\\@prodrive\\-technologies\\.com$",
+                    // "window_role": "^pop\\-up$"
+            }],
+            "type": "con"
+        }, {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+                "height": 2521,
+                "width": 500,
+                "x": 5572,
+                "y": 28
+            },
+            "name": "New Tab - Google Chrome",
+            "percent": 0.5,
+            "swallows": [{
+                "class": "^Google\\-chrome$",
+                "instance": "^google\\-chrome$"
+                    // "title": "^New\\ Tab\\ \\-\\ Google\\ Chrome$",
+                    // "window_role": "^browser$"
+            }],
+            "type": "con"
+        }]
+    }]
+}

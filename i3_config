@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -35,7 +36,7 @@ exec --no-startup-id blueman-manager
 exec --no-starup-id  feh --bg-scale ~/Desktop/DragonRed.jpg
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal -- zsh
 
 # CUSTOM START
 
@@ -60,7 +61,7 @@ bindsym $mod+Ctrl+a exec google-chrome --app=https://webmail.prodrive.nl/owa/#pa
 bindsym $mod+Ctrl+b exec google-chrome --app=https://bitbucket.prodrive.nl/dashboard&
 bindsym $mod+Ctrl+v exec google-chrome --app=https://www.scrumwise.com/scrum/#/backlog/project/iot-stm32/id-167429-4646-1&
 bindsym $mod+Ctrl+h exec google-chrome --app=https://dashboard.prodrive.nl/hour/bookings&
-bindsym $mod+Ctrl+c exec google-chrome --app=https://teams.microsoft.com/&
+bindsym $mod+Ctrl+c exec teams
 bindsym $mod+Ctrl+p exec google-chrome --app=https://project.prodrive.nl/?e=4603&d=1&
 bindsym $mod+Ctrl+d exec google-chrome --app=https://dashboard.prodrive.nl/&
 bindsym $mod+Ctrl+e exec eclipse
@@ -68,9 +69,16 @@ bindsym $mod+Ctrl+q exec speedcrunch
 bindsym $mod+Ctrl+g exec google-chrome
 
 bindsym $mod+Ctrl+1 exec "~/configurations/i3_workspace_position_restore.sh save; ~/.screenlayout/no-disps.sh"
-bindsym $mod+Ctrl+2 exec ~/.screenlayout/work_setup.sh
+bindsym $mod+Ctrl+2 exec ~/.screenlayout/no_disps.sh
 bindsym $mod+Ctrl+3 exec "~/.screenlayout/work_setup.sh; ~/configurations/i3_workspace_position_restore.sh"
 bindsym $mod+Ctrl+4 exec ~/.screenlayout/no-disps-dimm.sh
+bindsym $mod+Ctrl+0 exec "~/configurations/i3_workspace_position_restore.sh save; ~/.screenlayout/screen_off.sh; ~/.screenlayout/no-disps.sh"
+
+bindsym Ctrl+Shift+space exec dmenu_extended_run "-> Internet search: " "Google"
+bindsym Ctrl+$alt+space exec dmenu_extended_run
+
+bindsym $mod+$alt+1 exec ~/.workspace_layouts/workspace_layout_1.sh
+bindsym $mod+$alt+3 exec ~/.workspace_layouts/workspace_layout_3.sh
 
 #CUSTOM END
 

@@ -1,5 +1,7 @@
 alias psa='ps auxww | grep axezev'
 
+alias gstr='grep -Irns'
+
 # stm32f aliases
 alias stlink='~/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32CubeProgrammer &'
 
@@ -18,6 +20,18 @@ alias vvim='vim ~/.vimrc'
 alias vide='~/bin/vim -u ~/vimiderc'
 alias vin='~/bin/vim'
 alias vcl='find . -type f -name ".*.swp" -exec rm -f {} \;'
+
+# workspace_layout_file changes
+alias vw1='vim ~/.workspace_layouts/workspace_layout_1.sh'
+alias vw2='vim ~/.workspace_layouts/workspace_layout_2.sh'
+alias vw3='vim ~/.workspace_layouts/workspace_layout_3.sh'
+alias vw4='vim ~/.workspace_layouts/workspace_layout_4.sh'
+alias vw5='vim ~/.workspace_layouts/workspace_layout_5.sh'
+alias vw6='vim ~/.workspace_layouts/workspace_layout_6.sh'
+alias vw7='vim ~/.workspace_layouts/workspace_layout_7.sh'
+alias vw8='vim ~/.workspace_layouts/workspace_layout_8.sh'
+alias vw9='vim ~/.workspace_layouts/workspace_layout_9.sh'
+alias vw0='vim ~/.workspace_layouts/workspace_layout_0.sh'
 
 # Basic functionality
 alias neon='eclipse --launcher.suppressErrors -quiet &> /dev/null&'
@@ -70,6 +84,7 @@ alias gatcon='cd ~/repos/GATCON/gatcon_ac'
 alias gatiot='cd ~/repos/GATCON/gatcon_ac/iot_stm'
 alias gatacq='cd ~/repos/GATCON/gatcon_ac/AC_qualification'
 alias iot='cd ~/repos/IOT/boardsupport/'
+alias grm='cd ~/repos/GRM'
 alias iotdoc='cd ~/repos/IOT/iot_stm32/documentation'
 alias iottst='cd ~/repos/IOT/boardsupport_ut/'
 alias dcdc='cd ~/repos/DCDC/ac'
@@ -79,7 +94,6 @@ alias regcd='cd ~/repos/regex/tiny-regex-c'
 
 # Aliases for the YH_PROBLEM project
 alias yh_p='cd /data/projects/thermo-king/gatcon/axezev/temp/grm2g'
-alias grm='cd /data/projects/jungheinrich/axezev/'
 
 # Function to start the terminal
 tm () {
@@ -238,6 +252,10 @@ add_line_to()
     echo $1 >> $2
 }
 
+clean_port()
+{
+    sudo kill -9 `sudo lsof -t -i:$1`
+}
 
 # xdg-open
 # alias xdg-open="xdg-open 2>/dev/null"

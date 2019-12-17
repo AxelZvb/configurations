@@ -2,6 +2,23 @@
 export PATH=$HOME/bin:/usr/bin:/usr/local/bin:$PATH
 export PATH=$HOME/STM32CubeMX/:$PATH
 
+# GO
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/code_projects/Proj1
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# bazelisk
+export PATH=$PATH:$(go env GOPATH)/bin
+alias bazel='bazelisk'
+alias bazel_org='/home/axezev/bin/bazel'
+
+# QT creator
+export PATH=$PATH:$HOME/Qt/Tools/QtCreator/bin
+
+# pulse
+export PATH=$PATH:/usr/local/pulse
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/pulse/extra/usr/lib/x86_64-linux-gnu/
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/axezev/.oh-my-zsh"
 
@@ -104,8 +121,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 fpath[1,0]=~/.zsh/completion/
-mkdir -p ~/.zsh/completion/
-cp ~/repos/bazel/scripts/zsh_completion/_bazel ~/.zsh/completion
+#mkdir -p ~/.zsh/completion/
+#cp ~/repos/bazel/scripts/zsh_completion/_bazel ~/.zsh/completion
 
 # This way the completion script does not have to parse Bazel's options
 # repeatedly.  The directory in cache-path must be created manually.
@@ -148,4 +165,14 @@ bindkey '^[OB' history-beginning-search-forward
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Set the path for the DCDC compiler
+export DCDC_LINUX_COMPILER_PATH=~/repos/DCDC/tc
+
+
 echo "ZSH started"
+
+if [[ $1 == eval ]]
+then
+    "$@"
+set --
+fi
