@@ -7,96 +7,104 @@
     "percent": 1,
     "type": "con",
     "nodes": [{
-        // splitv split container with 2 children
+        // splith split container with 1 children
         "border": "normal",
         "floating": "auto_off",
-        "layout": "splitv",
+        "layout": "splith",
         "percent": 0.5,
         "type": "con",
         "nodes": [{
+            // splitv split container with 2 children
             "border": "normal",
-            "current_border_width": 2,
             "floating": "auto_off",
-            "geometry": {
-                "height": 2521,
-                "width": 1436,
-                "x": 4482,
-                "y": 18
-            },
-            "name": "Mail – axel.zevenbergen@prodrive-technologies.com",
-            "percent": 0.5,
-            "swallows": [{
-                "class": "^Google\\-chrome$",
-                "instance": "^webmail\\.prodrive\\.nl__owa$"
-                    // "title": "^Mail\\ \\–\\ axel\\.zevenbergen\\@prodrive\\-technologies\\.com$",
-                    // "window_role": "^pop\\-up$"
-            }],
-            "type": "con"
-        }, {
-            "border": "normal",
-            "current_border_width": 2,
-            "floating": "auto_off",
-            "geometry": {
-                "height": 2521,
-                "width": 1436,
-                "x": 4482,
-                "y": 18
-            },
-            "name": "Chat | Microsoft Teams",
-            "percent": 0.5,
-            "swallows": [{
-                "class": "^Google\\-chrome$",
-                "instance": "^teams\\.microsoft\\.com$"
-                    // "title": "^Chat\\ \\|\\ Microsoft\\ Teams$",
-                    // "window_role": "^pop\\-up$"
-            }],
-            "type": "con"
+            "layout": "splitv",
+            "percent": 1,
+            "type": "con",
+            "nodes": [{
+                "border": "normal",
+                "current_border_width": 2,
+                "floating": "auto_off",
+                "geometry": {
+                    "height": 1041,
+                    "width": 636,
+                    "x": 1282,
+                    "y": 18
+                },
+                "name": "E-mail - Axel Zevenbergen - Outlook",
+                "percent": 0.5,
+                "swallows": [{
+                    "class": "^Google\\-chrome$",
+                    "instance": "^outlook\\.office365\\.com__mail_inbox$"
+                }],
+                "type": "con"
+            }, {
+                "border": "none",
+                "current_border_width": 2,
+                "floating": "auto_off",
+                "geometry": {
+                    "height": 1271,
+                    "width": 720,
+                    "x": 4530,
+                    "y": 50
+                },
+                "name": "Linux Laptop Users | Microsoft Teams",
+                "percent": 0.5,
+                "swallows": [{
+                    "class": "^Microsoft\\ Teams\\ \\-\\ Preview$",
+                    "instance": "^microsoft\\ teams\\ \\-\\ preview$"
+                }],
+                "type": "con"
+            }]
         }]
     }, {
-        // splitv split container with 2 children
+        // splith split container with 1 children
         "border": "normal",
         "floating": "auto_off",
-        "layout": "splitv",
+        "layout": "splith",
         "percent": 0.5,
         "type": "con",
         "nodes": [{
+            // splitv split container with 2 children
             "border": "normal",
-            "current_border_width": 2,
             "floating": "auto_off",
-            "geometry": {
-                "height": 1250,
-                "width": 716,
-                "x": 5202,
-                "y": 18
-            },
-            "name": "Calendar – axel.zevenbergen@prodrive-technologies.com",
-            "percent": 0.5,
-            "swallows": [{
-                "class": "^Google\\-chrome$",
-                "instance": "^webmail\\.prodrive\\.nl__owa$"
-                    // "title": "^Calendar\\ \\–\\ axel\\.zevenbergen\\@prodrive\\-technologies\\.com$",
-                    // "window_role": "^pop\\-up$"
-            }],
-            "type": "con"
-        }, {
-            "border": "normal",
-            "current_border_width": 2,
-            "floating": "auto_off",
-            "geometry": {
-                "height": 2521,
-                "width": 500,
-                "x": 5572,
-                "y": 28
-            },
-            "name": "New Tab - Google Chrome",
-            "percent": 0.5,
-            "swallows": [{
-                "class": "^Google\\-chrome$",
-                "instance": "^google\\-chrome$"
-                    // "title": "^New\\ Tab\\ \\-\\ Google\\ Chrome$",
-                    // "window_role": "^browser$"
-            }],
-            "type": "con"
+            "layout": "splitv",
+            "percent": 1,
+            "type": "con",
+            "nodes": [{
+                "border": "normal",
+                "current_border_width": 2,
+                "floating": "auto_off",
+                "geometry": {
+                    "height": 1060,
+                    "width": 945,
+                    "x": 10,
+                    "y": 10
+                },
+                "name": "Agenda - Axel Zevenbergen - Outlook",
+                "percent": 0.5,
+                "swallows": [{
+                    "class": "^Google\\-chrome$",
+                    "instance": "^outlook\\.office365\\.com__calendar_view_week$"
+                }],
+                "type": "con"
+            }, {
+                "border": "normal",
+                "current_border_width": 2,
+                "floating": "auto_off",
+                "geometry": {
+                    "height": 2521,
+                    "width": 500,
+                    "x": 5572,
+                    "y": 28
+                },
+                "name": "New Tab - Google Chrome",
+                "percent": 0.5,
+                "swallows": [{
+                    "class": "^Google\\-chrome$",
+                    "instance": "^google\\-chrome$"
+                }],
+                "type": "con"
+            }]
         }]
     }]
 }

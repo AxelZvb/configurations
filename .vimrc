@@ -1,169 +1,48 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Load all used plugins
+source ~/configurations/.vim/rc_files/user_plugins.vim
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Configure the formatter on save
+source ~/configurations/.vim/rc_files/fmt.vim
 
-" ********************************* PLUGINS ****************************
+" Map keys
+source ~/configurations/.vim/rc_files/maps.vim
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'lervag/vimtex'
-Plugin 'ahw/vim-hooks.git'
-Plugin 'Valloric/YouCompleteMe'
+" Add xml functions
+source ~/configurations/.vim/rc_files/xml.vim
 
-Plugin 'aklt/plantuml-syntax'
+" Auto_commands
+source ~/configurations/.vim/rc_files/auto_commands.vim
 
-" Plugin 'TaskList.vim'
-" Plugin 'vitalk/vim-simple-todo'
+" Git settings
+source ~/configurations/.vim/rc_files/git.vim
 
-" ********** CODE-FMT  **********
-" Add maktaba and codefmt to the runtimepath.
-" (The latter must be installed before it can be used.)
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plugin 'google/vim-glaive'
-Plugin 'bazelbuild/vim-bazel'
-" ********** CODE-FMT  **********
-Plugin 'vim-scripts/DoxygenToolkit.vim'
+" Spelling settings
+source ~/configurations/.vim/rc_files/spell.vim
 
-Plugin 'tyru/open-browser.vim'
-Plugin 'weirongxu/plantuml-previewer.vim'
-
-Plugin 'kana/vim-textobj-indent'
-Plugin 'kana/vim-textobj-user'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-
-Plugin 'flazz/vim-colorschemes'
-
-Plugin 'Rykka/riv.vim'
-
-
-""" ********************************* PLUGINS **************************** """
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" ********** CODE-FMT  **********
-" the glaive#Install() should go after the "call vundle#end()"
-call glaive#Install()
-" Optional: Enable codefmt's default mappings on the <Leader>= prefix.
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
-Glaive codefmt clang_format_executable="/usr/bin/clang-format-8"
-
-augroup autoformat_settings
-  autocmd FileType bazel,bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-augroup END
-" ********** CODE-FMT  **********
-
-syntax on
+syntax enable
 filetype indent plugin on
-set spell spelllang:en_us
-hi clear SpellBad
-hi SpellBad cterm=underline
-map <F7> :tabp<CR>
-map <F8> :tabn<CR>
+filetype plugin on
 
-" Set Proper Tabs
+" Tabs
 set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
 
-"command QWC execute :s/\%V\(.*\)\%V/"\1",/
-
-nnoremap <Leader>: 0Di"<C-r>"",<Esc>
-nnoremap <Leader>; 0Di'<C-r>"',<Esc>
-nnoremap <Leader>" 0Di"<C-r>""<Esc>
-nnoremap <Leader>' 0Di'<C-r>"'<Esc>
-nnoremap <C>" ciw"<C-r>""<Esc>
-nnoremap <C>' ciw'<C-r>"'<Esc>
-
-
-au FileType gitcommit
- \ hi gitcommitSummary ctermfg=yellow ctermbg=red
-
-let g:loaded_youcompleteme = 1
-
+" Search
 set hlsearch
 
-function! DoPrettyXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. It's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
-endfunction
-command! PrettyXML call DoPrettyXML()
-
+" Number
 set number
 set relativenumber
-" To avoid being able to select the line numbers:
-" set mouse=a
 
-" colorscheme twilight
-hi clear SpellBad
-hi SpellBad cterm=underline
+" Path
+set path+=**
+set path+=.vim
+set wildmenu
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal! g'\"" | endif
-endif
+" Show commands
+set showcmd
 
-" Setup some options to use VIM as an ide
-augroup project
-  autocmd!
-  autocmd BufRead,BufNewFile *.h,*.c set filetype=c.doxygen
-augroup END
-
-" in file cannot be found
-" let &path.="src/include,/usr/include/AL,"
+" Activate the spell completion
+" set complete+=kspell

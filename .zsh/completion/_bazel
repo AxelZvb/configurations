@@ -1,4 +1,4 @@
-#compdef bazel /home/axezev/code_projects/Proj1/bin/bazelisk=bazel
+#compdef bazel
 
 # Copyright 2015 The Bazel Authors. All rights reserved.
 #

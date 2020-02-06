@@ -17,6 +17,7 @@ alias rrds02='remmina -c /home/axezev/.local/share/remmina/1547115843693.remmina
 
 # VIM
 alias vvim='vim ~/.vimrc'
+alias vcvim='vim ~/configurations/.vimrc'
 alias vide='~/bin/vim -u ~/vimiderc'
 alias vin='~/bin/vim'
 alias vcl='find . -type f -name ".*.swp" -exec rm -f {} \;'
@@ -39,14 +40,6 @@ alias mars='eclipse-mars --launcher.suppressErrors -quiet &> /dev/null&'
 
 # Git shortcuts
 alias vgit='vim ~/configurations/.gitconfig'
-alias gits='git status'
-alias gitp='git push'
-alias gitc='git commit'
-alias gitb='git branch'
-alias gitpu='git pull -r'
-alias git_push_lease='git push --force-with-lease'
-alias git_get_all_branches='for remote in `git branch -r`; do git branch --track ${remote#origin/} $remote; done'
-alias git_prune='git remote prune origin'
 alias git_rm_last_commit='git reset HEAD~1'
 alias gitbcl="git branch -v|grep \\[gone\\]|awk '{print $1}'|xargs -I{} git branch -D {}"
 
@@ -84,6 +77,7 @@ alias gatcon='cd ~/repos/GATCON/gatcon_ac'
 alias gatiot='cd ~/repos/GATCON/gatcon_ac/iot_stm'
 alias gatacq='cd ~/repos/GATCON/gatcon_ac/AC_qualification'
 alias iot='cd ~/repos/IOT/boardsupport/'
+alias pbazel='cd   ~//repos/pdt_bazel/'
 alias grm='cd ~/repos/GRM'
 alias iotdoc='cd ~/repos/IOT/iot_stm32/documentation'
 alias iottst='cd ~/repos/IOT/boardsupport_ut/'
@@ -256,6 +250,9 @@ clean_port()
 {
     sudo kill -9 `sudo lsof -t -i:$1`
 }
+
+alias kill_pulse='sudo kill -9 `ps -aux | sed -rn "s/(root\s*([0-9]{3,6}).*\/usr\/local\/pulse\/pulsesvc)/\2/p"`'
+alias find_pulse='ps -aux | sed -rn "s/(root\s*([0-9]{3,6}).*\/usr\/local\/pulse\/pulsesvc)/\1/p"'
 
 # xdg-open
 # alias xdg-open="xdg-open 2>/dev/null"

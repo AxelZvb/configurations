@@ -120,9 +120,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-fpath[1,0]=~/.zsh/completion/
+fpath+=~/.zsh/completion/
 #mkdir -p ~/.zsh/completion/
 #cp ~/repos/bazel/scripts/zsh_completion/_bazel ~/.zsh/completion
+
 
 # This way the completion script does not have to parse Bazel's options
 # repeatedly.  The directory in cache-path must be created manually.
@@ -134,6 +135,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 fpath=(~/.zsh $fpath)
 
 autoload -Uz compinit && compinit
+
+compdef bazelisk=bazel
 
 # enable full path
 # PROMPT='%m:%1~ %n%#'
@@ -176,3 +179,6 @@ then
     "$@"
 set --
 fi
+
+#TaskWarrior
+alias taskp='task project:active '
